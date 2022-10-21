@@ -1,7 +1,7 @@
 ---
-title: "Presentation title"
-subtitle: "Presentation subtitle (if any)"
-author: "Team name <br> Names of team members"
+title: "Project Proposal"
+subtitle: "How a Range of Factors Affect Worldwide Happiness"
+author: "Ben Mitchell, Eddie Jiang, Callum Knox, Sarah Brownscott"
 institute: "University of Edinburgh"
 date: "`r Sys.Date()`"
 output:
@@ -30,6 +30,7 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 
 ```{r load-data, include=FALSE}
 # Load your data here
+happiness <- read_csv("2015.csv")
 ```
 
 ```{r include=FALSE}
