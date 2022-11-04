@@ -1,7 +1,7 @@
 ---
-title: "Project Proposal"
-subtitle: "How a Range of Factors Affect Worldwide Happiness"
-author: "Ben Mitchell, Eddie Jiang, Callum Knox, Sarah Brownscott"
+title: "IDS Final Presentation"
+subtitle: "2022"
+author: "Ben Mitchell, Eddie Jiang, Callum Knox, Sarah Brown-Scott"
 institute: "University of Edinburgh"
 date: "`r Sys.Date()`"
 output:
@@ -41,7 +41,7 @@ style_xaringan(
 
 class: center, middle
 
-## A statement of the overall goal / research question
+## How  Do a Range of Factors Affect Worldwide Happiness?
 
 ---
 
