@@ -56,6 +56,14 @@ The dataset uses the variables of Country, Region, Happiness rank, Happiness sco
 
 The dataset we are using was collected in 2015.
 
+The dataset is used to help governments, organizations and civil society to inform their policy-making decisions.
+The happiness rank and score data was collected by the Gallup World Poll.
+
+The Gallup World Poll is said to be “the most comprehensive and farthest-reaching survey of the world”.
+
+On the Gallop website it is stated that the survey connects with more than 99% of the world's adult population through annual, nationally representative surveys with comparable metrics across countries.
+
+
 ---
 
 class: inverse, center, middle
