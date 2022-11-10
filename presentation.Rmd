@@ -41,7 +41,7 @@ style_xaringan(
 
 class: center, middle
 
-## How  Do a Range of Factors Affect Worldwide Happiness?
+## How  Do a Range of Factors Affect Worldwide Happiness???
 
 ---
 
