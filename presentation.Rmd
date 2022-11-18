@@ -45,7 +45,12 @@ colnames(happiness)[9] <- "freedom"
 
 ```{r include=FALSE}
 countries$Country[countries$Country == "Cote d\'Ivoire"] = "Ivory Coast"
-
+countries$Country[countries$Country == "Bosnia & Herzegovina"] = "Bosnia and Herzegovina"
+countries$Country[countries$Country == "Central African Rep."] = "Central African Republic"
+countries$Country[countries$Country == "Congo, Dem. Rep."] = "Congo (Kinshasa)"
+countries$Country[countries$Country == "Congo, Repub. of the"] = "Congo (Brazzaville)"
+# error in kososvo
+# and montenegro cont
 ```
 
 ```{r include=FALSE}
@@ -62,8 +67,6 @@ style_xaringan(
 class: center, middle
 
 ## How  Do a Range of Factors Affect Worldwide Happiness???
-
-![](img/happy person brazil.jpg)
 
 ---
 
