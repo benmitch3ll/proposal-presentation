@@ -4,8 +4,8 @@
     <title>IDS Final Presentation</title>
     <meta charset="utf-8" />
     <meta name="author" content="Ben Mitchell, Eddie Jiang, Callum Knox, Sarah Brown-Scott" />
-    <meta name="date" content="2022-11-10" />
-    <script src="libs/header-attrs-2.16/header-attrs.js"></script>
+    <meta name="date" content="2022-11-13" />
+    <script src="libs/header-attrs-2.18/header-attrs.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### University of Edinburgh
 ]
 .date[
-### 2022-11-10
+### 2022-11-13
 ]
 
 ---
@@ -87,7 +87,17 @@ If factors are proportional or inverse with each other.
 
 class: inverse, middle, center
 
-# Using xaringan
+# Plots
+
+
+
+```graphs
+
+ggplot(data = 2015, 
+       mapping = aes(x = happiness_score, y = family))+
+  geom_bar()
+
+```
 
 ---
 
@@ -153,7 +163,7 @@ print(ave)
 - goes here
 ]
 .pull-right[
-&lt;img src="presentation_files/figure-html/unnamed-chunk-2-1.png" width="100%" /&gt;
+&lt;img src="presentation_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
 ]
 
 ---

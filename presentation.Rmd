@@ -87,7 +87,16 @@ If factors are proportional or inverse with each other.
 
 class: inverse, middle, center
 
-# Using xaringan
+# Plots
+
+
+```{graphs}
+
+ggplot(data = 2015, 
+       mapping = aes(x = happiness_score, y = family))+
+  geom_bar()
+
+```
 
 ---
 
