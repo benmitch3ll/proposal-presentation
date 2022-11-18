@@ -36,6 +36,11 @@ countries <- read_csv("countries of the world.csv")
 
 ```{r include=FALSE}
 colnames(happiness)[4] <- "happiness_score"
+colnames(happiness)[6] <- "economy"
+colnames(happiness)[7] <- "family"
+colnames(happiness)[8] <- "health"
+colnames(happiness)[10] <- "trust"
+colnames(happiness)[9] <- "freedom"
 ```
 
 
@@ -95,16 +100,67 @@ class: inverse, middle, center
 
 # Plots
 
-```{r}
-#happiness %>%
- # left_join(happiness, countries, by "Country")
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness, 
+       mapping = aes(x = family, y = happiness_score))+
+  geom_jitter()
+
 ```
 
 
-```{r}
+---
+
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
 happiness %>%
 ggplot(data = happiness, 
-       mapping = aes(x = Family, y = happiness_score))+
+       mapping = aes(x = freedom, y = happiness_score))+
+  geom_jitter()
+
+```
+
+
+---
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness, 
+       mapping = aes(x = health, y = happiness_score))+
+  geom_jitter()
+
+```
+
+
+---
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness, 
+       mapping = aes(x = trust, y = happiness_score))+
+  geom_jitter()
+
+```
+
+
+---
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness, 
+       mapping = aes(x = economy, y = happiness_score))+
   geom_jitter()
 
 ```
