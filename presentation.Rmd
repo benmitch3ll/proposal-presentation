@@ -93,7 +93,7 @@ class: inverse, middle, center
 happiness %>%
 ggplot(data = happiness, 
        mapping = aes(x = happiness_score, y = family))+
-  geom_bar()
+  geom_point()
 
 ```
 
