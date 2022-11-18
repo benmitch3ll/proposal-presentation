@@ -39,6 +39,9 @@ class: center, middle, inverse, title-slide
 
 
 
+
+
+
 class: center, middle
 
 ## How  Do a Range of Factors Affect Worldwide Happiness???
@@ -91,13 +94,20 @@ class: inverse, middle, center
 
 
 ```r
-happiness %&gt;%
-ggplot(data = happiness, 
-       mapping = aes(x = "Family", y = "Happiness Score"))+
-  geom_point()
+#happiness %&gt;%
+ # left_join(happiness, countries, by "Country")
 ```
 
-&lt;img src="presentation_files/figure-html/unnamed-chunk-2-1.png" width="80%" /&gt;
+
+
+```r
+happiness %&gt;%
+ggplot(data = happiness, 
+       mapping = aes(x = Family, y = happiness_score))+
+  geom_jitter()
+```
+
+&lt;img src="presentation_files/figure-html/unnamed-chunk-4-1.png" width="80%" /&gt;
 
 
 ---
@@ -164,7 +174,7 @@ print(ave)
 - goes here
 ]
 .pull-right[
-&lt;img src="presentation_files/figure-html/unnamed-chunk-3-1.png" width="100%" /&gt;
+&lt;img src="presentation_files/figure-html/unnamed-chunk-5-1.png" width="100%" /&gt;
 ]
 
 ---

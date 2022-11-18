@@ -35,6 +35,11 @@ countries <- read_csv("countries of the world.csv")
 ```
 
 ```{r include=FALSE}
+colnames(happiness)[4] <- "happiness_score"
+```
+
+
+```{r include=FALSE}
 style_xaringan(
   title_slide_background_image = "img/confetti.jpg"
 )
@@ -91,10 +96,16 @@ class: inverse, middle, center
 # Plots
 
 ```{r}
+#happiness %>%
+ # left_join(happiness, countries, by "Country")
+```
+
+
+```{r}
 happiness %>%
 ggplot(data = happiness, 
-       mapping = aes(x = "Family", y = "Happiness Score"))+
-  geom_point()
+       mapping = aes(x = Family, y = happiness_score))+
+  geom_jitter()
 
 ```
 
