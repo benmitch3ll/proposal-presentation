@@ -31,6 +31,7 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 ```{r load-data, include=FALSE}
 # Load your data here
 happiness <- read_csv("2015.csv")
+countries <- read_csv("countries of the world.csv")
 ```
 
 ```{r include=FALSE}
@@ -92,7 +93,7 @@ class: inverse, middle, center
 ```{r}
 happiness %>%
 ggplot(data = happiness, 
-       mapping = aes(x = "Happiness Score", y = "Family"))+
+       mapping = aes(x = "Family", y = "Happiness Score"))+
   geom_point()
 
 ```
