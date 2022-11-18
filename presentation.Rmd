@@ -43,6 +43,19 @@ colnames(happiness)[10] <- "trust"
 colnames(happiness)[9] <- "freedom"
 ```
 
+```{r include=FALSE}
+countries <- countries %>%
+  mutate(
+    Country = case_when(
+      Country == "Cote d'lvoire" ~ "Ivory Coast",
+    ))
+
+```
+
+```{r include=FALSE}
+happiness_countries <- left_join(happiness, countries, by = "Country")
+```
+
 
 ```{r include=FALSE}
 style_xaringan(
