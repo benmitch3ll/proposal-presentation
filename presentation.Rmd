@@ -44,7 +44,7 @@ colnames(happiness)[9] <- "freedom"
 ```
 
 ```{r include=FALSE}
-countries$Country = setNames(c('Ivory Coast'), c('Cote d\'Ivoire'))[countries$Country] 
+countries$Country[countries$Country == "Cote d\'Ivoire"] = "Ivory Coast"
 
 ```
 
