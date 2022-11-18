@@ -92,7 +92,7 @@ class: inverse, middle, center
 ```{r}
 happiness %>%
 ggplot(data = happiness, 
-       mapping = aes(x = happiness_score, y = family))+
+       mapping = aes(x = "Happiness Score", y = "Family"))+
   geom_point()
 
 ```

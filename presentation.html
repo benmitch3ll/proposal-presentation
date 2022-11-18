@@ -90,14 +90,15 @@ class: inverse, middle, center
 # Plots
 
 
-
-```graphs
-
-ggplot(data = 2015, 
-       mapping = aes(x = happiness_score, y = family))+
-  geom_bar()
-
+```r
+happiness %&gt;%
+ggplot(data = happiness, 
+       mapping = aes(x = "Happiness Score", y = "Family"))+
+  geom_point()
 ```
+
+&lt;img src="presentation_files/figure-html/unnamed-chunk-2-1.png" width="80%" /&gt;
+
 
 ---
 
