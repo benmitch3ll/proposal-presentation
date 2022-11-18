@@ -89,14 +89,14 @@ class: inverse, middle, center
 
 # Plots
 
-
-```{graphs}
-
-ggplot(data = 2015, 
+```{r}
+happiness %>%
+ggplot(data = happiness, 
        mapping = aes(x = happiness_score, y = family))+
   geom_bar()
 
 ```
+
 
 ---
 
