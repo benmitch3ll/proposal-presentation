@@ -44,12 +44,22 @@ colnames(happiness)[9] <- "freedom"
 ```
 
 ```{r include=FALSE}
+<<<<<<< HEAD
 countries <- countries %>%
   mutate(
     Country = case_when(
       Country == "Cote d'Ivoire" ~ "Ivory Coast"
     ))
 
+=======
+countries$Country[countries$Country == "Cote d\'Ivoire"] = "Ivory Coast"
+countries$Country[countries$Country == "Bosnia & Herzegovina"] = "Bosnia and Herzegovina"
+countries$Country[countries$Country == "Central African Rep."] = "Central African Republic"
+countries$Country[countries$Country == "Congo, Dem. Rep."] = "Congo (Kinshasa)"
+countries$Country[countries$Country == "Congo, Repub. of the"] = "Congo (Brazzaville)"
+# error in kososvo
+# and montenegro cont
+>>>>>>> 1e138029d0ab4b7a4e3b5eaaa92d6ec94d538f9d
 ```
 
 ```{r include=FALSE}
@@ -66,8 +76,6 @@ style_xaringan(
 class: center, middle
 
 ## How  Do a Range of Factors Affect Worldwide Happiness???
-
-![](img/happy person brazil.jpg)
 
 ---
 
@@ -117,7 +125,10 @@ class: inverse, middle, center
 happiness %>%
 ggplot(data = happiness, 
        mapping = aes(x = family, y = happiness_score))+
-  geom_jitter()
+  geom_jitter()+
+  labs(title = "Happiness Score with Family",
+       x = "Family",
+       y = "Happiness Score")
 
 ```
 
@@ -132,7 +143,10 @@ class: inverse, middle, center
 happiness %>%
 ggplot(data = happiness, 
        mapping = aes(x = freedom, y = happiness_score))+
-  geom_jitter()
+  geom_jitter()+
+  labs(title = "Happiness Score with Freedom",
+       x = "Freedom",
+       y = "Happiness Score")
 
 ```
 
@@ -146,7 +160,10 @@ class: inverse, middle, center
 happiness %>%
 ggplot(data = happiness, 
        mapping = aes(x = health, y = happiness_score))+
-  geom_jitter()
+  geom_jitter()+
+  labs(title = "Happiness Score with Health",
+       x = "Health",
+       y = "Happiness Score")
 
 ```
 
@@ -160,7 +177,10 @@ class: inverse, middle, center
 happiness %>%
 ggplot(data = happiness, 
        mapping = aes(x = trust, y = happiness_score))+
-  geom_jitter()
+  geom_jitter()+
+  labs(title = "Happiness Score with Government Trust",
+       x = "Trust",
+       y = "Happiness Score")
 
 ```
 
@@ -174,7 +194,11 @@ class: inverse, middle, center
 happiness %>%
 ggplot(data = happiness, 
        mapping = aes(x = economy, y = happiness_score))+
-  geom_jitter()
+  geom_jitter()+
+  labs(title = "Happiness Score with Economy", 
+       subtitle = "In terms of GDP",
+       x = "Economy",
+       y = "Happiness Score")
 
 ```
 
