@@ -47,7 +47,7 @@ colnames(happiness)[9] <- "freedom"
 countries <- countries %>%
   mutate(
     Country = case_when(
-      Country == "Cote d'lvoire" ~ "Ivory Coast",
+      Country == "Cote d'Ivoire" ~ "Ivory Coast"
     ))
 
 ```
