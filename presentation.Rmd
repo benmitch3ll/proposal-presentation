@@ -21,6 +21,7 @@ library(tidyverse)
 library(palmerpenguins)
 library(knitr)
 library(xaringanthemer)
+library(tidymodels)
 ```
 
 ```{r setup, include=FALSE}
@@ -31,7 +32,33 @@ knitr::opts_chunk$set(fig.retina = 3, dpi = 300, fig.width = 6, fig.asp = 0.618,
 ```{r load-data, include=FALSE}
 # Load your data here
 happiness <- read_csv("2015.csv")
+countries <- read_csv("countries of the world.csv")
 ```
+
+```{r include=FALSE}
+colnames(happiness_countries)[4] <- "happiness_score"
+colnames(happiness_countries)[6] <- "economy"
+colnames(happiness_countries)[7] <- "family"
+colnames(happiness_countries)[8] <- "health"
+colnames(happiness_countries)[10] <- "trust"
+colnames(happiness_countries)[9] <- "freedom"
+colnames(happiness_countries)[20] <- "gdp"
+```
+
+```{r include=FALSE}
+countries$Country[countries$Country == "Cote d\'Ivoire"] = "Ivory Coast"
+countries$Country[countries$Country == "Bosnia & Herzegovina"] = "Bosnia and Herzegovina"
+countries$Country[countries$Country == "Central African Rep."] = "Central African Republic"
+countries$Country[countries$Country == "Congo, Dem. Rep."] = "Congo (Kinshasa)"
+countries$Country[countries$Country == "Congo, Repub. of the"] = "Congo (Brazzaville)"
+# error in kososvo
+# and montenegro cont
+```
+
+```{r include=FALSE}
+happiness_countries <- left_join(happiness, countries, by = "Country")
+```
+
 
 ```{r include=FALSE}
 style_xaringan(
@@ -39,11 +66,90 @@ style_xaringan(
 )
 ```
 
+```{r include=FALSE}
+set.seed(1111)
+
+countries_split <- initial_split(happiness_countries, prop = 0.80)
+
+train_data <- training(countries_split)
+test_data  <- testing(countries_split)
+```
+
+```{r include=FALSE}
+#model 1 with ROC curve and auc
+countries_mod_1 <- linear_reg() %>%
+  set_engine("lm")
+
+countries_rec_1 <- recipe(happiness_score ~ economy + family + health + trust + freedom, data = train_data) %>%
+  step_dummy(all_nominal(), -all_outcomes())
+
+countries_wflow_1 <- workflow() %>%
+  add_model(countries_mod_1) %>%
+  add_recipe(countries_rec_1)
+
+countries_fit_1 <- countries_wflow_1 %>%
+  fit(data = train_data)
+
+countries_pred_1 <- predict(countries_fit_1, test_data, type = "prob") %>%
+  bind_cols(test_data)
+
+countries_pred_1 %>%
+  roc_auc(
+    truth = happiness_score,
+    .pred_Agree,
+    event_level = "second"
+  )
+
+countries_pred_1 %>%
+  roc_curve(
+    truth = happiness_score,
+    .pred_Agree,
+    event_level = "second"
+  ) %>%
+  autoplot()
+```
+
+```{r include=FALSE}
+#model 2 with roc curve and auc
+countries_mod_2 <- linear_reg() %>%
+  set_engine("lm")
+
+countries_rec_2 <- recipe(happiness_score ~ gdp + family + Deathrate + trust + freedom, data = train_data) %>%
+  step_dummy(all_nominal(), -all_outcomes())
+
+countries_wflow_2 <- workflow() %>%
+  add_model(countries_mod_1) %>%
+  add_recipe(countries_rec_1)
+
+countries_fit_2 <- countries_wflow_1 %>%
+  fit(data = train_data)
+
+countries_pred_2 <- predict(countries_fit_1, test_data, type = "prob") %>%
+  bind_cols(test_data)
+
+countries_pred_2 %>%
+  roc_auc(
+    truth = happiness_score,
+    .pred_Agree,
+    event_level = "second"
+  )
+
+countries_pred_2 %>%
+  roc_curve(
+    truth = happiness_score,
+    .pred_Agree,
+    event_level = "second"
+  ) %>%
+  autoplot()
+```
 class: center, middle
 
 ## How  Do a Range of Factors Affect Worldwide Happiness???
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d16c2861db6dc893fbd4e2b6b402b956f5f8b03
 ---
 
 class: center, middle
@@ -86,7 +192,104 @@ If factors are proportional or inverse with each other.
 
 class: inverse, middle, center
 
-# Using xaringan
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness_countries, 
+       mapping = aes(x = family, y = happiness_score))+
+  geom_jitter() +
+  geom_smooth(method = "lm") +
+  labs(title = "Happiness Score with Family",
+       x = "Family",
+       y = "Happiness Score")
+
+```
+
+
+---
+
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness_countries, 
+       mapping = aes(x = freedom, y = happiness_score))+
+  geom_jitter()+
+  geom_smooth(method = "lm") +
+  labs(title = "Happiness Score with Freedom",
+       x = "Freedom",
+       y = "Happiness Score")
+
+```
+
+
+---
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness_countries, 
+       mapping = aes(x = health, y = happiness_score))+
+  geom_jitter()+
+  geom_smooth(method = "lm") +
+  labs(title = "Happiness Score with Health",
+       x = "Health",
+       y = "Happiness Score")
+
+```
+
+
+---
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness_countries, 
+       mapping = aes(x = trust, y = happiness_score))+
+  geom_jitter()+
+  geom_smooth(method = "lm") +
+  labs(title = "Happiness Score with Government Trust",
+       x = "Trust",
+       y = "Happiness Score")
+
+```
+
+
+---
+class: inverse, middle, center
+
+# Plots
+
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness_countries, 
+       mapping = aes(x = economy, y = happiness_score))+
+  geom_jitter()+
+  geom_smooth(method = "lm") +
+  labs(title = "Happiness Score with Economy", 
+       subtitle = "In terms of GDP",
+       x = "Economy",
+       y = "Happiness Score")
+
+```
+```{r echo=FALSE}
+happiness %>%
+ggplot(data = happiness_countries, 
+       mapping = aes(x = economy, y = gdp))+
+  geom_jitter()+
+  geom_smooth(method = "loess") +
+  labs(title = "Hapiness Score against GDP",
+       x = "Economy Score",
+       y = "GDP")
+
+```
 
 ---
 
