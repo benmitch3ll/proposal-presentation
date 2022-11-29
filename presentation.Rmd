@@ -146,10 +146,6 @@ class: center, middle
 
 ## How  Do a Range of Factors Affect Worldwide Happiness???
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 7d16c2861db6dc893fbd4e2b6b402b956f5f8b03
 ---
 
 class: center, middle
@@ -279,6 +275,12 @@ ggplot(data = happiness_countries,
        y = "Happiness Score")
 
 ```
+
+---
+class: inverse, middle, center
+
+# Plots
+
 ```{r echo=FALSE}
 happiness %>%
 ggplot(data = happiness_countries, 
@@ -329,7 +331,7 @@ or text in two columns $^*$
 
 ```{r boring-analysis}
 # a boring analysis
-ave <- mean(cars$dist)
+ave <- mean(happiness_countries$happiness_score)
 print(ave)
 ```
 
