@@ -310,6 +310,7 @@ happiness_countries %>%
          mapping = aes(x = happiness_score, y = Region.x))+
   geom_point()+
   labs(title = "Happiness Score shown by Region",
+       subtitle = "Regions are split into sub regions",
        x = "Happiness Score",
        y = "Region")
 ```
